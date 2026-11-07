@@ -1,0 +1,14 @@
+services:
+  seismic-mcp:
+    build: .
+    image: seismic-mcp-server:0.1.0
+    container_name: seismic-mcp
+    ports:
+      # Bound to localhost only. Change to "8000:8000" to expose on the network.
+      - "127.0.0.1:8000:8000"
+    environment:
+      SERVER_TZ: Asia/Bangkok
+      LOG_LEVEL: info
+      # Comma-separated browser Origins allowed besides localhost ("*" = any)
+      ALLOWED_ORIGINS: ""
+    restart: unless-stopped
