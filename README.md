@@ -2,7 +2,16 @@
 
 An MCP server for earthquake data (USGS, TMD) and insurance / parametric analytics, built to `spec.md`.
 The default transport is **Streamable HTTP** at `http://localhost:8000/mcp`. stdio is still supported.
+MCP server สำหรับข้อมูลแผ่นดินไหว (USGS + TMD) และเครื่องมือวิเคราะห์ประกันภัยแบบ parametric ตาม spec.md แต่ใช้ transport แบบ Streamable HTTP (endpoint /mcp) และรันใน Docker
 
+Tools
+Tool	คำอธิบาย
+usgs_search_earthquakes	ค้นหาแผ่นดินไหวจาก USGS FDSN
+tmd_get_daily_earthquakes	แผ่นดินไหวรายวันจาก TMD (default = วันนี้ ตาม TZ)
+tmd_get_recent_earthquakes	แผ่นดินไหวย้อนหลัง N วัน (1–7) จาก TMD
+match_events_to_assets	จับคู่เหตุการณ์กับทรัพย์สินที่เอาประกันตามระยะ/ขนาด
+compute_parametric_payout	คำนวณ payout แบบ parametric ตาม payout curve
+ทุก tool ที่คืนแผ่นดินไหวใช้ schema EarthquakeEvent ตาม spec ผลลัพธ์ส่งทั้ง structuredContent และ content[0].text (JSON string) argument ผิด schema → JSON-RPC error -32602; HTTP/parse error จาก upstream → -32000 
 ## Run with Docker
 
 ```bash
