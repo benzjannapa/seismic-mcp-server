@@ -1,6 +1,6 @@
 # Seismic MCP Server
 
-**English** | [ภาษาไทย](README.th.md)
+**English**
 
 An MCP (Model Context Protocol) server for **earthquake data** and **parametric insurance analytics**.
 AI clients such as Claude can call it directly as a set of tools. It uses the **Streamable HTTP** transport and runs in **Docker**.
@@ -11,39 +11,6 @@ AI clients such as Claude can call it directly as a set of tools. It uses the **
 > - "If this earthquake happened, how much would we pay out for each insured asset?"
 
 ---
-
-## Contents
-
-1. [Overview](#1-overview)
-2. [Project structure](#2-project-structure)
-3. [Getting started with Docker](#3-getting-started-with-docker)
-4. [Connecting a client](#4-connecting-a-client)
-5. [Tools](#5-tools)
-6. [The EarthquakeEvent format](#6-the-earthquakeevent-format)
-7. [Trying it with curl](#7-trying-it-with-curl)
-8. [Transport details](#8-transport-details)
-9. [Error codes](#9-error-codes)
-10. [Environment variables](#10-environment-variables)
-11. [Notes on the TMD API](#11-notes-on-the-tmd-api)
-12. [Running without Docker](#12-running-without-docker)
-13. [Troubleshooting](#13-troubleshooting)
-
----
-
-## 1. Overview
-
-### What is MCP?
-
-MCP is a standard that lets AI apps (Claude Desktop, Claude Code, Cursor and others) discover and call "tools" provided by external programs.
-They talk using **JSON-RPC 2.0**. This server supports the three core MCP methods:
-
-| Method | What it does |
-|---|---|
-| `initialize` | Opens the connection, agrees on a protocol version, and reports the server's name and capabilities |
-| `tools/list` | Returns every tool with its input schema, so the AI knows what it can call |
-| `tools/call` | Runs a tool by name with the given arguments and returns the result |
-
-It also supports `ping` and `notifications/initialized`.
 
 ### How it works
 
